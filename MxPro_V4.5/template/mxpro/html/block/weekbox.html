@@ -1,0 +1,11 @@
+<a href="{if condition="$mxprost['mxprocms']['s2']['tzzt'] eq 1 && $mxprost['mxprocms']['s2']['tourl'] neq 1"}{:mac_url_vod_play($vo)}{else}{:mac_url_vod_detail($vo)}{/if}" title="{$vo.vod_name}" class="module-poster-item module-item">
+<div class="module-item-cover">
+{if condition="$mxprost['mxprocms']['s2']['qjpic'] eq 0"}{if condition="$obj.vod_points gt 0"}<div class="module-item-new">Vip</div>
+{elseif condition="date('Y-m-d',$vo.vod_time) eq date('Y-m-d') && $weekarray eq $vo1"}<div class="module-item-new">追更 {if condition="$mxprost['mxprocms']['s3']['indexweekdate'] eq 1"}{$vo.vod_time|date='m/d',###}{/if}</div>{elseif condition="$mxprost['mxprocms']['s3']['indexweekdate'] eq 1"}<div class="module-item-new">{$vo.vod_time|date='m/d',###}</div>{/if}{/if}
+<div class="module-item-note">{if condition="$vo.vod_remarks neq ''"}{$vo.vod_remarks}{elseif condition="$vo.vod_serial gt 0"}第{$vo.vod_serial}集{else /}已完结{/if}</div>
+<div class="module-item-pic"><img class="lazy lazyload" data-original="{$vo.vod_pic|mac_url_img}" alt="{$vo.vod_name}"  referrerpolicy="no-referrer" src="{:mac_url_img($mxprost.mxprocms.s1.pic)}" onerror="javascript:this.src='{:mac_url_img($mxprost.mxprocms.s1.errorpic)}'"></div>
+</div>
+<div class="module-poster-item-info">
+<div class="module-poster-item-title" {if condition="$mxprost['mxprocms']['s2']['qjpic'] eq 1"}style=""{/if}>{$vo.vod_name}</div>
+</div>
+</a>

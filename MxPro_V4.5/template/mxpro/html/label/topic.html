@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+{assign name="$maccms.aid" value="9994" /}
+{include file="seo/topic_index"}
+{include file="public/include"}
+</head>
+<body>
+<div class="page list">
+{include file="public/head"}
+<div class="main">
+<div class="content">
+<div class="module">
+<div class="module-heading module-heading-tab">
+<span class="module-heading-tab-link active">专题列表</span>
+<span class="line"></span>
+</div>
+<div style="margin-bottom:20px;"></div>
+<div class="module-main tab-list active">
+<div class="module-items {if condition="$mxprost['mxprocms']['s3']['indexhotpic'] eq 1"}module-items module-topic-items{else}module-poster-items-base{/if}">
+{maccms:topic num="16" paging="yes" pageurl="label/topic"  order="time" by="desc"}
+<a href="{:mac_url_topic_detail($vo)}" title="{$vo.vod_name}" class="module-poster-item module-item">
+<div class="module-item-cover">
+<div class="module-item-note">最新</div>
+<div class="module-item-pic"><img class="lazy lazyload" data-original="{:mac_url_img($vo.topic_pic)}" alt="{$vo.vod_name}" referrerpolicy="no-referrer" src="{:mac_url_img($mxprost.mxprocms.s1.pic)}" onerror="javascript:this.src='{:mac_url_img($mxprost.mxprocms.s1.errorpic)}'"></div>
+</div>
+<div class="module-poster-item-info">
+<div class="module-poster-item-title" style="margin-left: 5px;">{$vo.topic_name}</div>
+</div>
+</a>
+{/maccms:topic}
+</div>
+</div>
+{include file="public/paging"}
+</div>
+</div>
+</div>
+{include file="public/foot"}
+</div>
+</body>
+</html>

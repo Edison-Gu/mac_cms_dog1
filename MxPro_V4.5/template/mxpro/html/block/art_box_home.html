@@ -1,0 +1,22 @@
+{if condition="$vo.art_pic eq ''"}
+<a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}" class="module-poster-item module-item module-topic-item">
+    <div class="module-item-cover">
+        <div class="module-item-note">{$vo.type.type_name}</div>
+        <div class="module-item-pic"><img class="lazy lazyload" data-original="{$vo.art_pic|mac_url_img}" alt="{$vo.art_name}"  referrerpolicy="no-referrer" src="{:mac_url_img($mxprost.mxprocms.s1.pic)}" onerror="javascript:this.src='{:mac_url_img($mxprost.mxprocms.s1.errorpic)}'"></div>
+    </div>
+    <div class="module-poster-item-info">
+        <div class="module-poster-item-title">{$vo.art_name}</div>
+    </div>
+</a>
+{else}
+<a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}" class="module-poster-item module-item module-topic-item">
+    <div class="module-item-cover">
+        <div class="module-item-note">{$vo.type.type_name}</div>
+        <div class="module-item-pic"><img class="lazy lazyload" data-original="{$vo.art_pic|mac_url_img}" alt="{$vo.art_name}"  referrerpolicy="no-referrer" src="{:mac_url_img($mxprost.mxprocms.s1.pic)}" onerror="javascript:this.src='{:mac_url_img($mxprost.mxprocms.s1.errorpic)}'"></div>
+    </div>
+    <div class="module-poster-item-info">
+        <div class="module-poster-item-title">{$vo.art_name}</div>
+    </div>
+</a>
+{/if}
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+<html lang="zh-cn">
+ <head>
+{include file="seo/actor_show"}
+{assign name="$maccms.aid" value="8880" /}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  {include file="public/include"}
+ </head>
+ <body>
+     <div class="pagelist pianku">
+   {include file="public/head"}   <!-- 头部 -->
+  <div class="main"> 
+	<div class="content">
+		<div class="module">
+		    <div class="module-heading module-heading-tab">
+			<!--<a class="module-heading-tab-link" >明星筛选</a><span class="line"></span>-->
+			<a href="{$config['mxprocms']['s4']['actornum']}" class="module-heading-tab-link">明星筛选<span class="line"></span>
+			<a class="module-heading-tab-link active">明星库</a>
+			</div>
+			
+			{include file="actor/screen"}   <!-- 筛选 -->
+			{if condition="$mxprost['mxprocms']['s6']['adsindex'] eq 1"}{include file="ads/ads-index"}	{/if}
+		<!--	<div class="module-main module-page {if condition="$mxprost['mxprocms']['s2']['qjpic'] eq 1"}scroll-box{/if}">
+				<div class="module-items {if condition="$mxprost['mxprocms']['s2']['qjpic'] eq 1"}module-poster-items-small scroll-content {else}module-poster-items-base {/if}">-->
+				{maccms:actor num="'.$mxprost['mxprocms']['s4']['actor1num'].'" paging="yes" pageurl="actor/show" type="current" order="desc" by="time"}
+				
+			<div class="module-poster-item module-item ">
+				<div class="module-item-cover">
+					<a href="{:mac_url_actor_detail($vo)}">
+					   <div class="module-item-pic">
+					   <img class="lazy lazyload"  data-original="{:mac_url_img($vo.actor_pic)}"  alt="{$vo.actor_name}"  referrerpolicy="no-referrer" src="{:mac_url_img($mxprost.mxprocms.s1.pic)}" onerror="javascript:this.src='{:mac_url_img($mxprost.mxprocms.s1.errorpic)}'">
+						<div class="loading"></div>
+					</div>
+					</a>
+					<div class="module-item-caption">
+						<span>{$vo.actor_remarks|mac_default=''|mac_substring=2}</span>
+						<span class="video-class">{$vo.actor_area|mac_default=''}</span>
+					</div>
+				</div>
+				<div class="module-poster-item-info">
+					<a href="{:mac_url_actor_detail($vo)}" class="module-poster-item-title" title="{$vo.actor_name}">{$vo.actor_name}</a>
+				</div>
+			</div>
+		       	{/maccms:actor}
+				</div>
+				{include file="public/paging"} <!-- 分页筛选 -->
+			</div>
+		    
+	</div>
+	</div>
+<!--</div>
+</div>-->
+ {include file="public/foot"} <!-- 底部-->
+ <script>
+  $(".mac_total").text('{$__PAGING__.record_total}');
+</script>
+ </body>

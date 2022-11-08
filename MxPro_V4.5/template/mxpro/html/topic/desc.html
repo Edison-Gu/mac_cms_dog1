@@ -1,0 +1,30 @@
+<div class="module module-info">
+    <div class="module-main topic-main">
+<!--        <div class="topic-pic-box lazyload" data-original="{:mac_url_img($obj.topic_pic)}">
+            <span class="look hidden-xs"></span>
+        </div>-->
+<div class="topic-pic-box lazyload" data-original="{:mac_url_img($obj.topic_pic)}" style="background-image: url(&quot;{:mac_url_img($obj.topic_pic)}&quot;);">
+            <span class="look hidden-xs"></span>
+        </div>
+        
+<!--<div class="topic-pic-box">
+            <img class="topic-pic-box lazy lazyload" data-original="{:mac_url_img($obj.topic_pic)}" referrerpolicy="no-referrer" src="{:mac_url_img($obj.topic_pic)}" style="display: inline;">
+            <span class="look hidden-xs"></span>
+        </div>   -->     
+        
+        
+        <div class="topic-info-main">
+            <div class="topic-info-heading">
+                <h1>{$obj.topic_name}</h1>
+            </div>
+            <div class="topic-info-content">
+                <p>{$obj.topic_blurb|mac_filter_html}</p>
+            </div>
+        </div>
+    </div>
+    <div class="module-poster-bg">
+        <div class="module-item-cover">
+            <div class="module-item-pic"><img class="lazy lazyload" data-original="{:mac_url_img($obj.topic_pic)}" alt="" referrerpolicy="no-referrer" src="{:mac_url_img($mxprost.mxprocms.s1.pic)}" onerror="javascript:this.src='{:mac_url_img($mxprost.mxprocms.s1.errorpic)}'" style=""></div>
+        </div>
+    </div>
+</div>

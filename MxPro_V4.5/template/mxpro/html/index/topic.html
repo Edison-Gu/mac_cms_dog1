@@ -1,0 +1,22 @@
+<div class="module">
+    <div class="module-heading">
+        <i class="icon-hot" style="color:#FF0000"></i>
+        <h2 class="module-title">{$mxprost.mxprocms.s3.indextopictext}<span class="module-title-en">{$mxprost.mxprocms.s3.indextopiceg}</span></h2>
+        <a class="module-heading-more" href="{:mac_url('topic/index')}">更多<i class="icon-arrow-right"></i></a>
+    </div>
+    <div class="module-main scroll-box">
+        <div class="module-items {if condition="$mxprost['mxprocms']['s3']['indexhotpic'] eq 1"}module-items module-topic-items-small scroll-content{else}module-poster-items-base{/if}">
+        {maccms:topic num="'.$mxprost['mxprocms']['s3']['indextopicnum'].'"  order="desc" by="time_add"}
+            <a href="{:mac_url_topic_detail($vo)}" title="{$vo.vod_name}" class="module-poster-item module-item">
+            <div class="module-item-cover">
+                <div class="module-item-note">最新</div>
+                <div class="module-item-pic"><img class="lazy lazyload" data-original="{:mac_url_img($vo.topic_pic)}" alt="{$vo.vod_name}"  referrerpolicy="no-referrer" src="{:mac_url_img($mxprost.mxprocms.s1.pic)}" onerror="javascript:this.src='{:mac_url_img($mxprost.mxprocms.s1.errorpic)}'"></div>
+            </div>
+            <div class="module-poster-item-info">
+                <div class="module-poster-item-title">{$vo.topic_name}</div>
+            </div>
+            </a>
+        {/maccms:topic}
+        </div>
+    </div>
+</div>
