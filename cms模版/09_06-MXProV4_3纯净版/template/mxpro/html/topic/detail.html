@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+{include file="seo/topic_detail"}
+{assign name="$maccms.aid" value="9994" /}
+{include file="public/include"}
+</head>
+<body>
+<div class="page view">
+    {include file="public/head"}
+    <div class="main">
+        <div class="content">
+            {include file="topic/desc"}
+            {include file="topic/vodlist"}
+        </div>
+    </div>
+    {include file="public/foot"}
+</div>
+<span style="display:none" class="mac_ulog_set" alt="设置内容页浏览记录" data-type="1" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+<span style="display:none" class="mac_history_set" alt="设置History历史记录" data-name="[{$obj.type.type_name}]{$obj.vod_name}" data-pic="{$obj.vod_pic|mac_url_img}"></span>
+</body>
+</html>

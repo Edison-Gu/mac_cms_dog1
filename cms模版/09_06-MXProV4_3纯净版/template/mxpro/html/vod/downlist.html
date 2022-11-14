@@ -1,0 +1,284 @@
+
+{notempty name="obj[vod_down_from]"}
+<div class="module" id="download-list" name="download-list">
+	<div class="module-heading">
+		<h2 class="module-title" title="{$obj.vod_name}的影片下载列表">影片下载</h2>
+		<div class="module-tab"><label class="module-tab-name"><span class="module-tab-value">{$obj['vod_down_list'][$param['sid']]['player_info']['show']}</span><i class="icon-arrow"></i></label>
+			<div class="module-tab-items tab swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode" >
+				<div class="module-tab-title">影片资源版本<span class="close-drop"><i class="icon-close-o"></i></span></div>
+				<div class="module-tab-content">
+				     {maccms:foreach name="obj.vod_down_list" id="vo" key="key"}
+					<div class="module-tab-item downtab-item {if condition="$key eq 1"} selected{/if}"><span data-dropdown-value="{$vo.player_info.show}">{$vo.player_info.show}</span><small>{$vo.url_count}</small></div>
+					 {/maccms:foreach}
+				</div>
+			</div>
+		</div>
+		<div class="shortcuts-mobile-overlay"></div>
+	</div>
+	<div class="module-list module-player-list sort-list module-downlist selected">
+		<div class="scroll-box-y">
+		    {maccms:foreach name="obj.vod_down_list" id="vo" key="key"}
+			<div class="module-row-one">
+			       {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+				<div class="module-row-info">
+					<a class="module-row-text copy" href="javascript:;" data-clipboard-text="{$vo2.url}" title="复制《{$obj.vod_name}》{$vo2.name}下载地址"><i class="icon-video-file"></i>
+						<div class="module-row-title">
+							<h4>{$obj.vod_name} - {$vo2.name}</h4>
+							<p>{$vo2.url}</p>
+						</div>
+					</a>
+					<div class="module-row-shortcuts">
+						<a class="btn-pc btn-down" href="{$vo2.url}" title="下载《{$obj.vod_name}》{$vo2.name}"><i class="icon-download"></i><span>下载</span></a>
+						<a class="btn-copyurl copy" href="javascript:;" data-clipboard-text="{$vo2.url}" title="复制《{$obj.vod_name}》{$vo2.name}下载地址"><i class="icon-url"></i><span class="btn-pc">复制链接</span></a>
+					</div>
+				</div>
+				    {/maccms:foreach}
+			</div>
+			 {/maccms:foreach}
+		</div>
+	</div>
+</div>
+	
+{/notempty}
+
+
+
+ <script>
+
+function show_tip(text) {
+  $('.shortcuts-box').show();
+  $('#shortcuts-info').html(text);
+  setTimeout(function () {
+    $('.shortcuts-box').fadeOut(1000);
+  }, 2000);
+}
+
+$(function () {
+
+  if ($('.share-btn').length > 0) {
+    var clipboard = new ClipboardJS('.share-btn');
+    clipboard.on('success', function (e) {
+      show_tip('分享信息复制成功，分享给好朋友一起看～');
+    });
+/*    clipboard.on('error', function (e) {
+      console.log(e);
+    });*/
+  }
+  if ($('.copy').length > 0) {
+    var down_clipboard = new ClipboardJS('.copy');
+    down_clipboard.on('success', function (e) {
+      show_tip('下载地址复制成功');
+    });
+/*    down_clipboard.on('error', function (e) {
+      console.log(e);
+    });*/
+  }
+/*  	$('.player-box-switch').click(function() {
+		$('.player-block').toggleClass('open');
+	}); */
+	 
+});
+ </script>
+ 
+ 
+ <style type="text/css">
+ 
+ /*影片下载*/
+	.module-row-text .icon-video-file {
+		top: 15px
+	}
+.module-downlist.selected .module-row-text,
+.tab-list.selected .module-blocklist a {
+	animation: opacity .2s;
+	-webkit-animation: opacity .2s
+}
+
+
+
+
+
+.module-row-info {
+	display: flex;
+	align-items: center;
+	padding: 10px 15px;
+	margin-bottom: 1px;
+	border-radius: 10px;
+	position: relative
+}
+
+.module-row-info:nth-child(odd) {
+	background: #f7f8f9
+}
+
+.module-row-info a {
+	font-size: 14px;
+	color: rgba(0, 0, 0, .83)
+}
+
+.module-row-info:last-child {
+	margin: 0
+}
+
+.module-row-shortcuts {
+	position: absolute;
+	right: 15px
+}
+
+.module-row-shortcuts a {
+	padding: 2px 20px;
+	position: relative;
+	z-index: 3;
+	color: rgba(0, 0, 0, .68)
+}
+
+.module-row-shortcuts a:hover {
+	color: #fff
+}
+
+.module-row-shortcuts a::after {
+	content: '';
+	width: 2px;
+	height: 12px;
+	position: absolute;
+	right: -1px;
+	top: 5px;
+	z-index: 1;
+	background: #c2c6d0
+}
+
+.module-row-shortcuts a:hover::after {
+	top: 12px
+}
+
+.module-row-shortcuts a:hover {
+	padding: 9px 20px
+}
+
+.module-row-shortcuts a::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	border-radius: 50px;
+	z-index: 2
+}
+
+.module-row-shortcuts a:hover::before {
+	background: #34a853;
+	margin: 0 2px
+}
+
+.module-row-shortcuts a:last-child:hover::before {
+	margin: 0 -2px
+}
+
+.module-row-shortcuts a:last-child::after {
+	width: 0
+}
+
+.module-row-shortcuts i {
+	font-size: 12px;
+	position: relative;
+	z-index: 2
+}
+
+.module-row-shortcuts span {
+	margin-left: 5px
+}
+
+.module-row-shortcuts span {
+	z-index: 3;
+	position: relative
+}
+
+.module-row-shortcuts .btn-copyurl span {
+	margin-left: 8px
+}
+
+.module-row-text {
+	width: 100%
+}
+
+.module-row-title {
+	width: 90%;
+	margin-left: 35px
+}
+
+.module-row-text .icon-video-file {
+	font-size: 24px;
+	color: #34a853;
+	position: absolute;
+	top: 17px
+}
+
+.module-row-title h4 {
+	max-width: 90%;
+	font-size: 14px
+}
+
+.module-row-title p {
+	max-width: 90%;
+	font-size: 12px;
+	color: rgba(0, 0, 0, .4)
+}
+
+#download-list {
+	margin-top: -30px;
+	padding-top: 30px
+}
+
+	.view .video-info-play {
+		margin-top: 30px;
+		display: inline-block;
+		text-align: center;
+		z-index: 2
+	}
+
+	.view .video-info-downbtn {
+		display: block;
+		margin: 15px 0 -10px;
+		color: #34a853
+	}
+
+	.view .video-info-downbtn i {
+		vertical-align: -10%;
+		margin-right: 5px;
+		font-size: 12px
+	}
+	
+	.module-row-shortcuts {
+		right: 10px
+	}
+
+	.module-row-title {
+		width: 80%;
+		margin-left: 33px
+	}
+
+	.module-row-title h4 {
+		font-size: 12px
+	}
+
+	.module-row-title p {
+		font-size: 10px
+	}
+
+	.module-row-shortcuts a,
+	.module-row-shortcuts a:hover {
+		padding: 7px 20px
+	}
+
+	.module-row-shortcuts a:last-child:hover::before {
+		margin: 0
+	}
+
+	.module-row-text .icon-video-file {
+		top: 15px
+	}
+
+	
+	
+	/*下载按钮*/
+	</style>

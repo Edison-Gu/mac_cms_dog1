@@ -1,0 +1,37 @@
+<!--温馨提示关闭按钮js开始-->
+<script type="text/javascript">
+		function autoScroll(obj){
+			$(obj).find("ul").animate({
+				marginTop : "-40px"
+			},500,function(){
+				$(this).css({marginTop : "0px"}).find("li:first").appendTo(this);
+			})
+		}
+		$(function(){
+			setInterval('autoScroll(".fodong_tips")',3000);
+		})
+  $(".close-btn").click(function () {
+    $(".tips-box").addClass("up");
+  }); 
+  </script>	
+  <!--温馨提示关闭按钮js结束-->
+<!--悬浮小窗播放器-->
+ {if condition="$mxprost['mxprocms']['s4']['miniplay'] eq 1"}
+<script type="text/javascript">
+    window.onload=function(){
+    var ha = ($('.MacPlayer').find('table').offset().top + $('.MacPlayer').find('table').height());
+    $(window).scroll(function(){ 
+            if ( $(window).scrollTop() > ha ) { 
+ $('.MacPlayer').find('table').removeClass('in').addClass('out');
+ $('.MacPlayer').find('table').css('height','250px');
+ $('.MacPlayer').find('table').css('width','450px');
+ } else if ( $(window).scrollTop() < ha) { 
+ $('.MacPlayer').find('table').removeClass('out').addClass('in'); 
+ $('.MacPlayer').find('table').css('height','100%');
+ } 
+ });
+}
+</script>
+
+{/if}
+<!--悬浮小窗播放器-->  
