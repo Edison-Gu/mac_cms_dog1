@@ -13,7 +13,7 @@ $theapis = [
         'name' => '接口组1', // 任意给接口组取个唯一的名称。
         'index' => 'youku.com,qiyi.com,qq.com,mgtv.com', //授权模式有效。 默认为空。如果填写将作为指定URL优先或独占解析。可填写一个或多个关键词，各关键词间请用英文的逗号隔开。举例：优酷的url地址样式为https://v.youku.com/v_show/id_XNTIwNTIwMjUyOA==.html，如填入youku，表示优酷的视频由本接口优先或独占解析。
         'apitype' =>1, // 远程调用接口为1，本机php代码为0，一般请选择远程调用。如调用本机php代码，需要一定的动手能力，请向开发者寻求帮助。
-        'url' => 'https://baidu1.com/?url=,https://baidu2.com/?url=', // 此处填入json解析接口的地址,可填写一个或多个地址（免费模式只能填一个地址），各地址间请用英文的逗号隔开,系统会自动进行分解接口并轮询。
+        'url' => 'http://61.160.223.41:7788/home/api?type=ys&uid=2747969&key=bcgmrstuxHKLRSY017&url=', // 此处填入json解析接口的地址,可填写一个或多个地址（免费模式只能填一个地址），各地址间请用英文的逗号隔开,系统会自动进行分解接口并轮询。
         'parse_timeout' =>5,//解析超时限制，单位为秒。
         'hls_timeout' =>0,//授权模式有效。m3u8文件缓存时间，单位为秒，如果为0则不缓存。
         'hls_ts_jiami' =>0,//授权模式有效。对缓存的m3u8文件进行ts加密，参数0表示不加密，1表示全部加密，2表示随机加密。
@@ -26,9 +26,9 @@ $theapis = [
     ],
     [
         'name' => '接口组2',
-        'index' => 'BYGA-', 
+        'index' => 'BYGA', 
         'apitype' =>1,
-        'url' => 'https://baidu3.com/?url=',
+        'url' => 'http://61.160.223.41:7788/home/api?type=app&uid=2747969&key=bcgmrstuxHKLRSY017&url=',
         'parse_timeout' =>5,
         'hls_timeout' =>0,
         'hls_ts_jiami' =>0,
